@@ -403,13 +403,86 @@ figure;
 imshow(K,[0,255]);
 
 %%
+%获取像素值
 clear all;
 close all;
 clc
+RGB = imread('peppers.png');
+c = [12 146];
+r = [104 156];
+pixels = impixel(RGB,c,r)
+% imtool('peppers.png');
+
+%%
+%获取任意点的像素值
+clear all;
+close all;
+clc
+imshow('football.jpg');
+h=impixelinfo;
+
+%%
+%绘制灰度图像的等高线
+clear all;
+close all;
+clc
+RGB=imread('football.jpg');
+I=rgb2gray(RGB);
+figure;
+imcontour(I);
+%%
+%图像的领域滤波
+clear all;
+close all;
+clc
+I=imread('rice.png');
+I=imnoise(I,'gaussian',0,0.02);
+h=[1 1 1;1 1 1; 1 1 1];
+h=h/9;
+J=conv2(I,h);
+figure;
+subplot(121);
+imshow(I);
+subplot(122);
+imshow(uint8(J),[]);
+%%
+%图像的中值滤波
+clear all;
+close all;
+clc
+I=imread('rice.png');
+I=imnoise(I,'salt & pepper',0.03);
+J=medfilt2(I,[3,3]);
+figure;
+subplot(121);
+imshow(I);
+subplot(122);
+imshow(uint8(J),[]);
+
+%%
+%图像的自适应滤波
+clear all;
+close all;
+clc
+I=imread('rice.png');
+I=imnoise(I,'gaussian',0,0.03);
+J=wiener2(I,[5,5]);
+figure;
+subplot(121);
+imshow(I);
+subplot(122);
+imshow(uint8(J),[]);
+
 %%
 clear all;
 close all;
 clc
+
+%%
+clear all;
+close all;
+clc
+
 %%
 clear all;
 close all;

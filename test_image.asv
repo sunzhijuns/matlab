@@ -386,24 +386,84 @@ subplot(122);
 imshow(K,[]);
 
 %%
+%余弦变换
 clear all;
 close all;
 clc
 RGB=imread('autumn.tif');
 I=rgb2gray(RGB);
+figure;
+imshow(I);
 J=dct2(I);
 figure;
 imshow(log(abs(J)),[]),colormap(jet),colorbar
-J()
+J(abs(J)<10)=0;
+K=idct2(J);
+figure;
+imshow(K,[0,255]);
+
+%%
+%获取像素值
+clear all;
+close all;
+clc
+RGB = imread('peppers.png');
+c = [12 146];
+r = [104 156];
+pixels = impixel(RGB,c,r)
+% imtool('peppers.png');
+
+%%
+%获取任意点的像素值
+clear all;
+close all;
+clc
+imshow('football.jpg');
+h=impixelinfo;
+
+%%
+%绘制灰度图像的等高线
+clear all;
+close all;
+clc
+RGB=imread('football.jpg');
+I=rgb2gray(RGB);
+figure;
+imcontour(I);
+%%
+%图像的滤波
+clear all;
+close all;
+clc
+I=imread('rice.png');
+I=imnoise(I,'gaussian',0,0.02);
+h=[1 1 1;1 1 1; 1 1 1];
+h=h/9;
+J=conv2(I,h);
+figure;
+subplot(121);
+imshow(I);
+imshow(I)
+%%
+clear all;
+close all;
+clc
 
 %%
 clear all;
 close all;
 clc
+
 %%
 clear all;
 close all;
 clc
+
+%%
+clear all;
+close all;
+clc
+
 %%
 clear all;
 close all;
