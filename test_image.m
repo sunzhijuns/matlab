@@ -359,11 +359,31 @@ figure;
 imshow(J);
 
 %%
+%图像的傅里叶变换
 clear all;
 close all;
+I=imread('cameraman.tif','tif');
+J=fft2(I,256,256);
+K1=fftshift(J);
+K2=log(abs(K1));
+figure;
+subplot(121);
+imshow(I);
+subplot(122);
+imshow(K2,[]);
+
 %%
+%傅里叶反变换
 clear all;
 close all;
+I=imread('cameraman.tif','tif');
+J=fft2(I,256,256);
+K=ifft2(J,256,256);
+figure;
+subplot(121);
+imshow(I);
+subplot(122);
+imshow(K,[]);
 
 %%
 clear all;
