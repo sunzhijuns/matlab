@@ -474,14 +474,28 @@ subplot(122);
 imshow(uint8(J),[]);
 
 %%
+%边缘检测
 clear all;
 close all;
 clc
+I=imread('rice.png');
+J1=edge(I,'sobel');
+J2=edge(I,'prewitt');
+J3=edge(I,'roberts');
+figure;
+subplot(221),imshow(I);
+subplot(222),imshow(J1);
+subplot(223),imshow(J2);
+subplot(224),imshow(J3);
 
 %%
 clear all;
 close all;
 clc
+for i=1:10
+    disp(1)
+    pause(0.5);
+end
 
 %%
 clear all;
