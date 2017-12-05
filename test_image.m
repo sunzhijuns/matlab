@@ -335,11 +335,29 @@ imshow(A);
 subplot(122);
 imshow(B);
 %%
+%添加噪声
 clear all;
 close all;
+I=imread('eight.tif','tif');
+J1=imnoise(I,'gaussian',0.1);
+J2=imnoise(I,'poisson');
+J3=imnoise(I,'salt & pepper',0.1);
+figure;
+subplot(221),imshow(I),title('原图像')
+subplot(222),imshow(J1),title('Gaussian')
+subplot(223),imshow(J2),title('Possion')
+subplot(224),imshow(J3),title('salt & pepper')
 %%
+%图像的剪切
 clear all;
 close all;
+I=imread('football.jpg','jpg');
+J=imcrop(I,[100,0,150,150]);
+figure;
+imshow(I);
+figure;
+imshow(J);
+
 %%
 clear all;
 close all;
