@@ -317,25 +317,97 @@ subimage(RGB2);
 clear all;
 close all;
 [X,map]=imread('trees.tif','tif');
+[Y,newmap]=imresize(X,map,0.5);
+figure;
+subplot(121)
+subimage(X,map);
+subplot(122);
+subimage(Y,newmap);
 %%
+%图像旋转
 clear all;
 close all;
+A=imread('football.jpg','jpg');
+B=imrotate(A,-20,'nearest');
+figure;
+subplot(121);
+imshow(A);
+subplot(122);
+imshow(B);
 %%
+%添加噪声
 clear all;
 close all;
+I=imread('eight.tif','tif');
+J1=imnoise(I,'gaussian',0.1);
+J2=imnoise(I,'poisson');
+J3=imnoise(I,'salt & pepper',0.1);
+figure;
+subplot(221),imshow(I),title('原图像')
+subplot(222),imshow(J1),title('Gaussian')
+subplot(223),imshow(J2),title('Possion')
+subplot(224),imshow(J3),title('salt & pepper')
 %%
+%图像的剪切
 clear all;
 close all;
+I=imread('football.jpg','jpg');
+J=imcrop(I,[100,0,150,150]);
+figure;
+imshow(I);
+figure;
+imshow(J);
+
 %%
+%图像的傅里叶变换
 clear all;
 close all;
+I=imread('cameraman.tif','tif');
+J=fft2(I,256,256);
+K1=fftshift(J);
+K2=log(abs(K1));
+figure;
+subplot(121);
+imshow(I);
+subplot(122);
+imshow(K2,[]);
+
 %%
+%傅里叶反变换
 clear all;
 close all;
+I=imread('cameraman.tif','tif');
+J=fft2(I,256,256);
+K=ifft2(J,256,256);
+figure;
+subplot(121);
+imshow(I);
+subplot(122);
+imshow(K,[]);
 
 %%
 clear all;
 close all;
+clc
+RGB=imread('autumn.tif');
+I=rgb2gray(RGB);
+J=dct2(I);
+figure;
+imshow(log(abs(J)),[]),colormap(jet),colorbar
+J()
+
+%%
+clear all;
+close all;
+clc
+%%
+clear all;
+close all;
+clc
+%%
+clear all;
+close all;
+clc
 
 
 

@@ -386,8 +386,34 @@ subplot(122);
 imshow(K,[]);
 
 %%
+%余弦变换
 clear all;
 close all;
+clc
+RGB=imread('autumn.tif');
+I=rgb2gray(RGB);
+figure;
+imshow(I);
+J=dct2(I);
+figure;
+imshow(log(abs(J)),[]),colormap(jet),colorbar
+J(abs(J)<10)=0;
+K=idct2(J);
+figure;
+imshow(K,[0,255]);
+
+%%
+clear all;
+close all;
+clc
+%%
+clear all;
+close all;
+clc
+%%
+clear all;
+close all;
+clc
 
 
 
