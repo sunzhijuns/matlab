@@ -317,23 +317,9 @@ subimage(RGB2);
 clear all;
 close all;
 [X,map]=imread('trees.tif','tif');
-[Y,newmap]=imresize(X,map,0.5);
-figure;
-subplot(121)
-subimage(X,map);
-subplot(122);
-subimage(Y,newmap);
 %%
-%图像旋转
 clear all;
 close all;
-A=imread('football.jpg','jpg');
-B=imrotate(A,-20,'nearest');
-figure;
-subplot(121);
-imshow(A);
-subplot(122);
-imshow(B);
 %%
 clear all;
 close all;
