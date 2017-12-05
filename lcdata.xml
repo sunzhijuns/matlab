@@ -528,6 +528,7 @@
         <encoding name="US-ASCII"/>
         <encoding name="UTF-8">
             <encoding_alias name="utf8"/>
+            <encoding_alias name="GBK"/>
         </encoding>
         <encoding name="ISO-8859-1">
             <encoding_alias name="ISO8859-1"/>
@@ -591,9 +592,9 @@
             <encoding_alias name="koi8u"/>
         </encoding>
         <encoding name="GB18030"/>
-        <encoding name="GBK">
+<!--  sunzhijun       <encoding name="GBK">
             <encoding_alias name="936"/>
-        </encoding>
+        </encoding> -->
         <encoding name="GB2312">
             <encoding_alias name="EUC-CN"/>
             <encoding_alias name="euccn"/>
