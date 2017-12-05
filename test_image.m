@@ -220,6 +220,69 @@ RGB = imread('brick0.png');
 figure;
 imshow(X,map);
 
+%%
+%图像相加
+clear all;
+close all;
+I=imread('rice.png');
+J=imread('cameraman.tif');
+K=imadd(I,J,'uint16');
+imshow(K,[]);
+%%
+%图像相减
+clear all;
+close all;
+I=imread('rice.png');
+J=imsubtract(I,60);
+figure;
+subplot(121);
+imshow(I);
+subplot(122);
+imshow(J);
+%%
+%图像相乘
+clear all;
+close all;
+I=imread('moon.tif','tif');
+J=immultiply(I,0.9);
+figure;
+subplot(121);
+imshow(I);
+subplot(122);
+imshow(J);
+%%
+%图像相除
+clear all;
+close all;
+X=uint8([255 10 75; 44 255 100]);
+Y=uint8([50 20 50; 50 50 50]);
+Z=imdivide(X,Y)
+figure;
+subplot(131);
+imshow(X);
+subplot(132);
+imshow(Y);
+subplot(133);
+imshow(Z);
+%%
+%两幅图像的绝对差异
+clear all;
+close all;
+I=imread('cameraman.tif');
+J=uint8(filter2(fspecial('gaussian'),I));
+K=imabsdiff(I,J);
+figure;
+subplot(131);
+imshow(I);
+subplot(132);
+imshow(J);
+subplot(133);
+imshow(K,[]);
+
+
+%%
+imtool('cameraman.tif');
+
 
 
 
