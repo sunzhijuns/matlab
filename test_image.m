@@ -35,15 +35,16 @@ imshow(I);
 %将rgb图像转换为二值图像
 clear;
 clc;
-for i=0:7
+for i=0
     RGB=imread(['tank_blue_run' num2str(i) '.png']);
     bw=im2bw(RGB,0.1);
     figure;
     imshow(bw);
-    imwrite(bw,['tank_blue_run' num2str(i) '.png'])
+%     imwrite(bw,['tank_blue_run' num2str(i) '.png'])
 end
 
 %%
+%索引图像->rgb图像
 clear all;
 close all;
 [X,map]=imread('trees.tif','tif');
@@ -53,21 +54,25 @@ imshow(RGB);
 set(gcf,'position',[200,200,500,500]);
 
 %%
+%rgb图像->索引图像
 clear all;
 close all;
 RGB=imread('peppers.png');
-[X,map]=rgb2ind(RGB,16);
+figure;
+imshow(RGB);
+[X,map]=rgb2ind(RGB,255);
 figure;
 imshow(X,map);
-imwrite(X,map,'myclown.png')
+% imwrite(X,map,'myclown.png')
 %%
+% rgb图像->灰度图像
 clear all;
 close all;
 RGB=imread('peppers.png','png');
 I=rgb2gray(RGB);
 figure;
 imshow(I);
-imwrite(I,'peppersgray.png')
+% imwrite(I,'peppersgray.png')
 %%
 clear all;
 
@@ -130,6 +135,7 @@ for i=1:m
    end
 end
 %%
+%将数据矩阵转换为灰度图像
 clear all;
 close all;
 clc;
@@ -140,6 +146,17 @@ imshow(I);
 J = imresize(I, 0.5);
 figure;
 imshow(J);
+%%
+%抖动
+clear all;
+close all;
+clc;
+I=imread('cameraman.tif');
+BW=dither(I);
+subplot(121);
+imshow(I);
+subplot(122);
+imshow(BW);
 
 %%
 RGB=imread('myfootball.png');
@@ -147,15 +164,48 @@ I=rgb2gray(RGB);
 figure;
 imshow(I);
 
+%%
+% 读取一帧
+clear;
+clc;
+I1=imread('mri.tif',1);
+I20=imread('mri.tif',20);
+figure;
+subplot(121);
+imshow(I1);
+subplot(122);
+imshow(I20);
+%%
+%显示多帧图像
+clear;
+clc;
+mri=uint8(zeros(128,128,1,27));
+for i=1:27
+    [mri(:,:,:,i),map]=imread('mri.tif',i);
+end
+montage(mri,map);
+%%
+%生成动画
+clear;
+clc
+mri=uint8(zeros(128,128,1,27));
+for i=1:27
+    [mri(:,:,:,i),map]=imread('mri.tif',i);
+end
+mov=immovie(mri,map);
+implay(mov);
+
 
 
 
 
 %%
+%图像的读写
 clear all;
 close all;
-RGB = imread('mlhdlc_cameraman.tif','tif');
+[RGB,map ]= imread('mlhdlc_cameraman.tif','tif');
 imshow(RGB)
+imfinfo('mlhdlc_cameraman.tif')
 % imwrite(RGB,'myfootball.png','png');
 
 %%
