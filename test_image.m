@@ -194,6 +194,10 @@ for i=1:27
 end
 mov=immovie(mri,map);
 implay(mov);
+% movie(mov);
+%%
+%图像浏览器
+imtool('myslicerice.png')
 
 
 
