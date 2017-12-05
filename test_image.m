@@ -21,7 +21,27 @@ X =imread('rice.png');
 Y=grayslice(X,16);
 figure;
 imshow(Y,jet(16));
-imwrite(Y,jet(16),'myslicerice.png')
+% imwrite(Y,jet(16),'myslicerice.png')
+
+%%
+%将索引图象转换为灰度图像
+clear;
+clc;
+[X,map]=imread('trees.tif','tif');
+I=ind2gray(X,map);
+figure;
+imshow(I);
+%%
+%将rgb图像转换为二值图像
+clear;
+clc;
+for i=0:7
+    RGB=imread(['tank_blue_run' num2str(i) '.png']);
+    bw=im2bw(RGB,0.1);
+    figure;
+    imshow(bw);
+    imwrite(bw,['tank_blue_run' num2str(i) '.png'])
+end
 
 %%
 clear all;
@@ -94,6 +114,7 @@ s1=strrep(str,'.png','.tif')
 str2={'c\run','c\ddn'}
 str3=strrep(str2,'\\','c:\')
 %%
+%调整图片大小
 clear;clc;
 ss=ls;
 ss
@@ -104,9 +125,22 @@ for i=1:m
    if index 
        str1=str(1:index+3)
        imageData=imread(str1);
-       
+       J = imresize(imageData, 0.5);
+       imwrite(J,str1);
    end
 end
+%%
+clear all;
+close all;
+clc;
+A=rand(200,200);
+I=mat2gray(A);
+figure;
+imshow(I);
+J = imresize(I, 0.5);
+figure;
+imshow(J);
+
 %%
 RGB=imread('myfootball.png');
 I=rgb2gray(RGB);
